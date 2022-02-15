@@ -25,13 +25,14 @@ export default [
     external: ["query-string"],
     input: "src/index.ts",
     output: {
+      exports: "named",
       file: "dist/index.umd.min.js",
       format: "umd",
-      name: "urlSub",
-      indent: false,
       globals: {
         "query-string": "query-string",
       },
+      indent: false,
+      name: "urlSub",
     },
     plugins: [
       typescript(),
