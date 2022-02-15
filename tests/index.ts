@@ -79,4 +79,13 @@ test("has named formatUrl export", () => {
   assert.type(UrlSub.formatUrl, "function");
 });
 
+test("encodes route components", () => {
+  assert.is(
+    UrlSub.formatUrl("https://api.example.com", "/user/:id", {
+      id: "with,comma",
+    }),
+    "https://api.example.com/user/with%2Ccomma"
+  );
+});
+
 test.run();
