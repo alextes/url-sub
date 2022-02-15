@@ -23,7 +23,7 @@ export const formatUrl = (
       }
 
       if (str.includes(`:${key}`)) {
-        const valueStr = String(value);
+        const valueStr = encodeURIComponent(value);
         return str.split(`:${key}`).join(valueStr);
       } else {
         queryParams[key] = value;
