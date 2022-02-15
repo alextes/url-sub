@@ -1,14 +1,13 @@
 {
   "name": "url-sub",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Format URLs using templates.",
   "scripts": {
-    "build": "rollup -c",
+    "build": "tsc",
     "test": "uvu -r tsm tests"
   },
-  "main": "dist/index.umd.min.js",
-  "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "files": [
     "dist"
   ],
@@ -29,10 +28,6 @@
   },
   "homepage": "https://github.com/alextes/url-sub#readme",
   "devDependencies": {
-    "@rollup/plugin-babel": "^5.3.0",
-    "rollup": "^2.67.2",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.31.2",
     "tsm": "^2.2.1",
     "typescript": "^4.5.5",
     "uvu": "^0.5.3"
