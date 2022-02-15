@@ -1,6 +1,7 @@
 import { test } from "uvu";
 import * as assert from "uvu/assert";
 import * as UrlSub from "../src/index.js";
+import urlSub from "../src/index.js";
 
 test("accepts empty params", () => {
   assert.is(
@@ -68,6 +69,14 @@ test("throws an error for unmatched route params", () => {
   assert.throws(() =>
     UrlSub.formatUrl("https://api.example.com", "/user/:id", {})
   );
+});
+
+test("has a default export with formatUrl", () => {
+  assert.type(urlSub.formatUrl, "function");
+});
+
+test("has named formatUrl export", () => {
+  assert.type(UrlSub.formatUrl, "function");
 });
 
 test.run();
