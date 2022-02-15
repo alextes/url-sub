@@ -1,0 +1,32 @@
+{
+  "name": "url-builder",
+  "version": "0.1.0",
+  "description": "A small library that helps build URLs for fetch requests.",
+  "scripts": {
+    "test": "uvu -r tsm tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alextes/url-builder.git"
+  },
+  "keywords": [
+    "url",
+    "formatting",
+    "querystring",
+    "util"
+  ],
+  "author": "Alexander Tesfamichael <alex.tesfamichael@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alextes/url-builder/issues"
+  },
+  "homepage": "https://github.com/alextes/url-builder#readme",
+  "devDependencies": {
+    "tsm": "^2.2.1",
+    "typescript": "^4.5.5",
+    "uvu": "^0.5.3"
+  },
+  "dependencies": {
+    "query-string": "^7.1.1"
+  }
+}
