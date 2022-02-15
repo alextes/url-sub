@@ -27,7 +27,7 @@ export default [
     output: {
       file: "dist/index.umd.min.js",
       format: "umd",
-      name: "urlBuilder",
+      name: "urlSub",
       indent: false,
       globals: {
         "query-string": "query-string",

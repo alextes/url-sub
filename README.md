@@ -1,12 +1,12 @@
-# Url Builder 🔗👷
+# URL Sub 🔗↔️
 
-A small library that helps format URLs for fetch requests.
+Format URLs for fetch requests using templates and substitution values.
 
 ## usage
 ```ts
-import * as UrlBuilder from "url-builder"
+import * as UrlSub from "url-sub"
 
-UrlBuilder.formatUrl("https://api.example.com", "/user/:username/bio", {
+UrlSub.formatUrl("https://api.example.com", "/user/:username/bio", {
   username: "jake",
   exclude_sensitive: true
 })
