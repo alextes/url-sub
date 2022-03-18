@@ -1,6 +1,6 @@
 import queryString from "query-string";
 
-type SubstituteValue = string | number | undefined | null;
+type SubstituteValue = string | number | boolean | undefined | null;
 
 /**
  * Takes a route template and formats it using the passed substitute values.

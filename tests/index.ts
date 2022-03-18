@@ -47,6 +47,16 @@ test("accepts numbers as query params", () => {
   );
 });
 
+test("accepts booleans as query params", () => {
+  assert.is(
+    UrlSub.formatUrl("https://api.example.com", "/user", {
+      id: 1,
+      filter_new: true,
+    }),
+    "https://api.example.com/user?filter_new=true&id=1"
+  );
+});
+
 test("omits params with undefined values", () => {
   assert.is(
     UrlSub.formatUrl("https://api.example.com", "/user", {
