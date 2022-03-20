@@ -55,7 +55,3 @@ export const formatUrl = (
 
   return `${safeBase}/${safeRoute}${safeQueryString}`;
 };
-
-export default {
-  formatUrl,
-};
