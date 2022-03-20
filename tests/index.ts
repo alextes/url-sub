@@ -1,16 +1,15 @@
-import { test } from "uvu";
-import * as assert from "uvu/assert";
-import * as UrlSub from "../src/index.js";
+import test from "ava";
+import * as UrlSub from "../src/index";
 
-test("accepts empty params", () => {
-  assert.is(
+test("accepts empty params", (t) => {
+  t.is(
     UrlSub.formatUrl("https://api.example.com", "", {}),
     "https://api.example.com/"
   );
 });
 
-test("substitutes route parameters", () => {
-  assert.is(
+test("substitutes route parameters", (t) => {
+  t.is(
     UrlSub.formatUrl("https://api.example.com", "/user/:username/bio", {
       username: "jake",
     }),
@@ -18,8 +17,8 @@ test("substitutes route parameters", () => {
   );
 });
 
-test("adds query params", () => {
-  assert.is(
+test("adds query params", (t) => {
+  t.is(
     UrlSub.formatUrl("https://api.example.com", "/", {
       keyA: "valA",
       keyB: "valB",
@@ -28,8 +27,8 @@ test("adds query params", () => {
   );
 });
 
-test("accepts numbers as route params", () => {
-  assert.is(
+test("accepts numbers as route params", (t) => {
+  t.is(
     UrlSub.formatUrl("https://api.example.com", "/user/:id", {
       id: 1,
     }),
@@ -37,8 +36,8 @@ test("accepts numbers as route params", () => {
   );
 });
 
-test("accepts numbers as query params", () => {
-  assert.is(
+test("accepts numbers as query params", (t) => {
+  t.is(
     UrlSub.formatUrl("https://api.example.com", "/user", {
       id: 1,
     }),
@@ -46,8 +45,8 @@ test("accepts numbers as query params", () => {
   );
 });
 
-test("accepts booleans as query params", () => {
-  assert.is(
+test("accepts booleans as query params", (t) => {
+  t.is(
     UrlSub.formatUrl("https://api.example.com", "/user", {
       id: 1,
       filter_new: true,
@@ -56,8 +55,8 @@ test("accepts booleans as query params", () => {
   );
 });
 
-test("omits params with undefined values", () => {
-  assert.is(
+test("omits params with undefined values", (t) => {
+  t.is(
     UrlSub.formatUrl("https://api.example.com", "/user", {
       id: undefined,
     }),
@@ -65,8 +64,8 @@ test("omits params with undefined values", () => {
   );
 });
 
-test("omits params with null values", () => {
-  assert.is(
+test("omits params with null values", (t) => {
+  t.is(
     UrlSub.formatUrl("https://api.example.com", "/user", {
       id: null,
     }),
@@ -74,23 +73,19 @@ test("omits params with null values", () => {
   );
 });
 
-test("throws an error for unmatched route params", () => {
-  assert.throws(() =>
-    UrlSub.formatUrl("https://api.example.com", "/user/:id", {})
-  );
+test("throws an error for unmatched route params", (t) => {
+  t.throws(() => UrlSub.formatUrl("https://api.example.com", "/user/:id", {}));
 });
 
-test("has named formatUrl export", () => {
-  assert.type(UrlSub.formatUrl, "function");
+test("has named formatUrl export", (t) => {
+  t.is(typeof UrlSub.formatUrl, "function");
 });
 
-test("encodes route components", () => {
-  assert.is(
+test("encodes route components", (t) => {
+  t.is(
     UrlSub.formatUrl("https://api.example.com", "/user/:id", {
       id: "with,comma",
     }),
     "https://api.example.com/user/with%2Ccomma"
   );
 });
-
-test.run();
