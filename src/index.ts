@@ -16,23 +16,21 @@ export const formatUrl = (
   let queryParams: Record<string, SubstituteValue> = {};
 
   // Substitute route params.
-  const formattedRoute = Object.entries(substitutes).reduce(
-    (str, [key, value]) => {
-      if (value === undefined || value === null) {
-        return str;
-      }
-
-      if (str.includes(`:${key}`)) {
-        const valueStr = encodeURIComponent(value);
-        return str.split(`:${key}`).join(valueStr);
-      } else {
-        queryParams[key] = value;
-      }
-
+  const formattedRoute = Object.keys(substitutes).reduce((str, key) => {
+    const value = substitutes[key];
+    if (value === undefined || value === null) {
       return str;
-    },
-    routeTemplate
-  );
+    }
+
+    if (str.includes(`:${key}`)) {
+      const valueStr = encodeURIComponent(value);
+      return str.split(`:${key}`).join(valueStr);
+    } else {
+      queryParams[key] = value;
+    }
+
+    return str;
+  }, routeTemplate);
 
   // Make sure no route params remain.
   if (formattedRoute.includes(":")) {
