@@ -1,5 +1,7 @@
 import queryString from "query-string";
 
+export class MissingSubstituteError extends Error {}
+
 type SubstituteValue = string | number | boolean | undefined | null;
 
 /**
@@ -35,7 +37,7 @@ export const formatUrl = (
   // Make sure no route params remain.
   if (formattedRoute.includes(":")) {
     const missingParam = formattedRoute.match(/:[a-zA-Z]+/);
-    throw new Error(
+    throw new MissingSubstituteError(
       `Missing substitute for route parameter: '${missingParam}' in '${formattedRoute}'`
     );
   }

@@ -73,8 +73,10 @@ test("omits params with null values", (t) => {
   );
 });
 
-test("throws an error for unmatched route params", (t) => {
-  t.throws(() => UrlSub.formatUrl("https://api.example.com", "/user/:id", {}));
+test("throws an MissingSubstituteError for unmatched route params", (t) => {
+  t.throws(() => UrlSub.formatUrl("https://api.example.com", "/user/:id", {}), {
+    instanceOf: UrlSub.MissingSubstituteError,
+  });
 });
 
 test("has named formatUrl export", (t) => {
