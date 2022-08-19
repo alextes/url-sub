@@ -91,3 +91,17 @@ test("encodes route components", (t) => {
     "https://api.example.com/user/with%2Ccomma"
   );
 });
+
+test("allows not encoding url params", (t) => {
+  t.is(
+    UrlSub.formatUrlWithOptions(
+      "https://api.example.com/",
+      "/user",
+      {
+        normally_encoded: "https://dont-encode-me.com",
+      },
+      { encodeParams: false }
+    ),
+    "https://api.example.com/user?normally_encoded=https://dont-encode-me.com"
+  );
+});
