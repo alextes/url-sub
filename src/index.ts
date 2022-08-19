@@ -2,7 +2,7 @@ import queryString from "query-string";
 
 export class MissingSubstituteError extends Error {}
 
-type SubstituteValue = string | number | boolean | undefined | null;
+export type SubstituteValue = string | number | boolean | undefined | null;
 
 /**
  * Takes a route template and formats it using the passed substitute values.
